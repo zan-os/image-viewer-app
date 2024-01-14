@@ -1,43 +1,37 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/image_entity.dart';
 
-abstract class ImageListState extends Equatable {}
-
-class InitState extends ImageListState {
-  @override
-  List<Object?> get props => [];
-}
-
-class LoadingState extends ImageListState {
-  @override
-  List<Object?> get props => [];
-}
-
-class SuccessState extends ImageListState {
+class ImageListState extends Equatable {
   final List<ImageEntity> imageList;
+  final int progress;
+  final String message;
+  final CancelToken cancelToken;
 
-  SuccessState({
+  const ImageListState({
     this.imageList = const [],
+    this.progress = 0,
+    this.message = '',
+    required this.cancelToken,
   });
 
-  @override
-  List<Object?> get props => [imageList];
-
-  SuccessState copyWith({
+  ImageListState copyWith({
     List<ImageEntity>? imageList,
+    int? progress,
+    String? message,
+    CancelToken? cancelToken,
   }) {
-    return SuccessState(
+    return ImageListState(
       imageList: imageList ?? this.imageList,
+      progress: progress ?? this.progress,
+      message: message ?? this.message,
+      cancelToken: cancelToken ?? this.cancelToken,
     );
   }
-}
 
-class ErrorState extends ImageListState {
-  final String message;
-
-  ErrorState({required this.message});
   @override
-  List<Object?> get props => [message];
+  List<Object> get props => [imageList, progress, message, cancelToken];
 }

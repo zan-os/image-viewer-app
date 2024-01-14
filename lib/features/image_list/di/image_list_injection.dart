@@ -2,6 +2,7 @@ import 'package:unsplash_flutter/features/image_list/data/datasource/remote/imag
 import 'package:unsplash_flutter/features/image_list/data/model/mapper/image_mapper.dart';
 import 'package:unsplash_flutter/features/image_list/data/repository/image_list_repository_impl.dart';
 import 'package:unsplash_flutter/features/image_list/domain/repository/image_list_repository.dart';
+import 'package:unsplash_flutter/features/image_list/domain/usecase/download_image_usecase.dart';
 import 'package:unsplash_flutter/features/image_list/domain/usecase/get_image_list_usecase.dart';
 
 import '../../../registered_injection.dart';
@@ -16,7 +17,7 @@ class ImageListInjection {
 
   _registerDataSource() {
     sl.registerLazySingleton<ImageListRemoteDataSource>(
-      () => ImageListRemoteDataSourceImpl(dio: sl()),
+      () => ImageListRemoteDataSourceImpl(dio: sl(), constantConfig: sl()),
     );
   }
 
@@ -35,6 +36,10 @@ class ImageListInjection {
   _registerUseCase() {
     sl.registerLazySingleton<GetImageListUseCase>(
       () => GetImageListUseCase(repository: sl()),
+    );
+
+    sl.registerLazySingleton<DownloadImageUseCase>(
+      () => DownloadImageUseCase(repository: sl()),
     );
   }
 }

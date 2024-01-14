@@ -8,5 +8,6 @@ class ImageMapper {
         likedByUser: response.likedByUser ?? false,
         user: response.user?.name ?? '',
         url: response.urls?.thumb ?? '',
+        rawImageUrl: response.urls?.raw ?? '',
       );
 }

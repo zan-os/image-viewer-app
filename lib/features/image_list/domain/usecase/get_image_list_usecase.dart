@@ -11,6 +11,6 @@ class GetImageListUseCase extends BaseUseCase<List<ImageEntity>, NoParams> {
       : _repository = repository;
 
   @override
-  Future<Either<FailureResponse, List<ImageEntity>>> call(NoParams noParams) =>
+  Future<Either<FailureResponse, List<ImageEntity>>> call(NoParams params) =>
       _repository.getImageList();
 }

@@ -20,8 +20,9 @@ final GoRouter _router = GoRouter(routes: <RouteBase>[
     path: '/',
     builder: (context, state) => BlocProvider(
       create: (context) => ImageListCubit(
+        downloadImageUseCase: sl(),
         getImageListUseCase: sl(),
-      )..getImageList(),
+      ),
       child: const ImageListScreen(),
     ),
   )

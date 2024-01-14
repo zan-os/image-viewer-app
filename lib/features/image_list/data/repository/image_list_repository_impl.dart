@@ -35,4 +35,30 @@ class ImageListRepositoryImpl implements ImageListRepository {
       );
     }
   }
+
+  @override
+  Future<Either<FailureResponse, void>> downloadImage({
+    required String url,
+    required ProgressCallback onReceiveProgress,
+    required String savePath,
+    required CancelToken cancelToken,
+  }) async {
+    try {
+      final downloadProgress = await _remoteDataSource.downloadImage(
+        url: url,
+        onReceiveProgress: onReceiveProgress,
+        savePath: savePath,
+        cancelToken: cancelToken,
+      );
+
+      return Right(downloadProgress);
+    } on DioException catch (e) {
+      return Left(
+        FailureResponse(
+          message: e.message,
+          statusCode: e.response?.statusCode,
+        ),
+      );
+    }
+  }
 }

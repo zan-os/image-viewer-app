@@ -493,7 +493,6 @@ class _$ImageModelImpl implements _ImageModel {
   @override
   final Sponsorship? sponsorship;
   @override
-  @override
   final User? user;
 
   @override
@@ -645,7 +644,6 @@ abstract class _ImageModel implements ImageModel {
   List<dynamic>? get currentUserCollections;
   @override
   Sponsorship? get sponsorship;
-  @override
   @override
   User? get user;
   @override
