@@ -19,7 +19,7 @@ class CoreInjection {
     sl.registerLazySingleton(() {
       final constantConfig = ConstantConfig();
       Map<String, Object> headers = {};
-      headers['Authorization'] = 'Client-ID ${constantConfig.accessKey}';
+      headers['Authorization'] = 'Client-ID ${constantConfig.apiKey}';
       BaseOptions options = BaseOptions(
         baseUrl: constantConfig.baseUrl,
         headers: headers,

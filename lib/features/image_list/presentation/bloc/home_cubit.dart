@@ -5,20 +5,20 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:unsplash_flutter/core/usecase/base_usecase.dart';
-import 'package:unsplash_flutter/features/image_list/domain/usecase/download_image_usecase.dart';
-import 'package:unsplash_flutter/features/image_list/domain/usecase/get_image_list_usecase.dart';
-import 'package:unsplash_flutter/features/image_list/presentation/bloc/image_list_state.dart';
+import 'package:unsplash_flutter/features/image_list/domain/usecase/download_image.dart';
+import 'package:unsplash_flutter/features/image_list/domain/usecase/get_image_list.dart';
+import 'package:unsplash_flutter/features/image_list/presentation/bloc/home_state.dart';
 
-class ImageListCubit extends Cubit<ImageListState> {
-  ImageListCubit({
-    required GetImageListUseCase getImageListUseCase,
-    required DownloadImageUseCase downloadImageUseCase,
+class HomeCubit extends Cubit<HomeState> {
+  HomeCubit({
+    required GetImageList getImageListUseCase,
+    required DownloadImage downloadImageUseCase,
   })  : _getImageListUseCase = getImageListUseCase,
         _downloadImageUseCase = downloadImageUseCase,
-        super(ImageListState(cancelToken: CancelToken()));
+        super(HomeState(cancelToken: CancelToken()));
 
-  final GetImageListUseCase _getImageListUseCase;
-  final DownloadImageUseCase _downloadImageUseCase;
+  final GetImageList _getImageListUseCase;
+  final DownloadImage _downloadImageUseCase;
 
   void getImageList() async {
     final fetchResult = await _getImageListUseCase.call(NoParams());

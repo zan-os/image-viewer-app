@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:unsplash_flutter/core/failure/failure.dart';
-import 'package:unsplash_flutter/features/image_list/data/datasource/remote/image_list_remote_datasource.dart';
+import 'package:unsplash_flutter/features/image_list/data/datasource/remote/home_remote_datasource.dart';
 import 'package:unsplash_flutter/features/image_list/data/model/mapper/image_mapper.dart';
 import 'package:unsplash_flutter/features/image_list/domain/entities/image_entity.dart';
-import 'package:unsplash_flutter/features/image_list/domain/repository/image_list_repository.dart';
+import 'package:unsplash_flutter/features/image_list/domain/repository/home_repository.dart';
 
-class ImageListRepositoryImpl implements ImageListRepository {
-  final ImageListRemoteDataSource _remoteDataSource;
+class HomeRepositoryImpl implements HomeRepository {
+  final HomeRemoteDataSource _remoteDataSource;
   final ImageMapper _mapper;
 
-  ImageListRepositoryImpl(
-      {required ImageListRemoteDataSource remoteDataSource,
+  HomeRepositoryImpl(
+      {required HomeRemoteDataSource remoteDataSource,
       required ImageMapper mapper})
       : _remoteDataSource = remoteDataSource,
         _mapper = mapper;

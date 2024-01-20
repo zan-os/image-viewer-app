@@ -3,12 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:unsplash_flutter/core/failure/failure.dart';
 import 'package:unsplash_flutter/core/usecase/base_usecase.dart';
-import 'package:unsplash_flutter/features/image_list/domain/repository/image_list_repository.dart';
+import 'package:unsplash_flutter/features/image_list/domain/repository/home_repository.dart';
 
-class DownloadImageUseCase extends BaseUseCase<void, DownloadImageParams> {
-  final ImageListRepository _repository;
+class DownloadImage extends BaseUseCase<void, DownloadImageParams> {
+  final HomeRepository _repository;
 
-  DownloadImageUseCase({required ImageListRepository repository})
+  DownloadImage({required HomeRepository repository})
       : _repository = repository;
 
   @override

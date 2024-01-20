@@ -5,7 +5,7 @@ import 'package:unsplash_flutter/features/image_list/data/model/response/image_m
 
 import '../../../../../config/constant_config.dart';
 
-abstract class ImageListRemoteDataSource {
+abstract class HomeRemoteDataSource {
   Future<List<ImageModel>> getImageList();
   Future<void> downloadImage({
     required String url,
@@ -15,11 +15,11 @@ abstract class ImageListRemoteDataSource {
   });
 }
 
-class ImageListRemoteDataSourceImpl implements ImageListRemoteDataSource {
+class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final Dio _dio;
   final ConstantConfig _constantConfig;
 
-  ImageListRemoteDataSourceImpl(
+  HomeRemoteDataSourceImpl(
       {required Dio dio, required ConstantConfig constantConfig})
       : _dio = dio,
         _constantConfig = constantConfig;

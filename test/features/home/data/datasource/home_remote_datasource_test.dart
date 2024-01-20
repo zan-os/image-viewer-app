@@ -6,15 +6,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:unsplash_flutter/config/constant_config.dart';
-import 'package:unsplash_flutter/features/image_list/data/datasource/remote/image_list_remote_datasource.dart';
+import 'package:unsplash_flutter/features/image_list/data/datasource/remote/home_remote_datasource.dart';
 import 'package:unsplash_flutter/features/image_list/data/model/response/image_model.dart';
 
 import '../../../../fixture/fixture_reader.dart';
-import 'image_list_remote_datasource_test.mocks.dart';
+import 'home_remote_datasource_test.mocks.dart';
 
 @GenerateMocks([HttpClientAdapter, Dio])
 void main() {
-  late ImageListRemoteDataSourceImpl imageListRemoteDataSource;
+  late HomeRemoteDataSourceImpl imageListRemoteDataSource;
   late ConstantConfig constantConfig;
   late MockDio mockDio;
   late MockHttpClientAdapter mockDioAdapter;
@@ -30,12 +30,12 @@ void main() {
     mockDioAdapter = MockHttpClientAdapter();
 
     headers = {};
-    headers['Authorization'] = 'Client-ID ${constantConfig.accessKey}';
+    headers['Authorization'] = 'Client-ID ${constantConfig.apiKey}';
 
     mockDio.httpClientAdapter = mockDioAdapter;
     mockDio.options = BaseOptions(headers: headers);
 
-    imageListRemoteDataSource = ImageListRemoteDataSourceImpl(
+    imageListRemoteDataSource = HomeRemoteDataSourceImpl(
       dio: mockDio,
       constantConfig: constantConfig,
     );
